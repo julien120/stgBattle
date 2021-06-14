@@ -15,7 +15,7 @@ public class ObjectPool : MonoBehaviour
         {
             var tmpobj = Instantiate(content);
             tmpobj.transform.parent = transform;
-            tmpobj.transform.localPosition = new Vector3(100, 0, 100);//画面外
+            tmpobj.transform.localPosition = new Vector3(100, 100,3);//画面外
             objctQueue.Enqueue(tmpobj);
         }
     }

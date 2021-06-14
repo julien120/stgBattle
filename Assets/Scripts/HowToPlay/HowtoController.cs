@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public class HowtoController : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerObj;
+    [SerializeField] private HowtoPlayerController playerObj;
     // Start is called before the first frame update
     void Update()
     {
@@ -16,7 +17,14 @@ public class HowtoController : MonoBehaviour
         //{
         //    playerObj.Shot();
         //}
-        playerObj.Shot();
+       // playerObj.Shot();
+
+        Observable.Interval(System.TimeSpan.FromSeconds(0.3))
+            .Subscribe(x =>
+            {
+                playerObj.Shot();
+            }
+            ).AddTo(this);
     }
 
 

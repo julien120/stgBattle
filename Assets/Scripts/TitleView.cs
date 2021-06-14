@@ -40,7 +40,6 @@ public class TitleView : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -61,7 +60,7 @@ public class TitleView : MonoBehaviour
 
     private void SetStageLevelSelection()
     {
-        int levelCount = PlayerPrefs.GetInt("levelCount", 1);
+        int levelCount = PlayerPrefs.GetInt(PlayerPrefsKeys.LevelCount, 1);
         for (int i = 0; i < levelSelectionButton.Length; i++)
         {
             if (i + 1 > levelCount)
@@ -80,7 +79,7 @@ public class TitleView : MonoBehaviour
     private void ToHomeFromHow()
     {
         howtoplayChara.SetActive(false);
-        howToPlayPannel.DOAnchorPos(new Vector2(0, -1023), 0.3f);
+        howToPlayPannel.DOAnchorPos(new Vector2(0, -1888), 0.3f);
     }
 
 
@@ -88,9 +87,9 @@ public class TitleView : MonoBehaviour
     private void UpdateStageLevelSelection()
     {
         var nextStageCount = 2;
-        if (nextStageCount> PlayerPrefs.GetInt("levelCount"))
+        if (nextStageCount> PlayerPrefs.GetInt(PlayerPrefsKeys.LevelCount))
         {
-            PlayerPrefs.SetInt("levelCount", nextStageCount);
+            PlayerPrefs.SetInt(PlayerPrefsKeys.LevelCount, nextStageCount);
         }
     }
 
