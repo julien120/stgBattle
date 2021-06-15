@@ -54,8 +54,13 @@ public class CoinAnimation : MonoBehaviour
 		//prepare pool
 		PrepareCoins();
 	}
+	private void Update()
+	{
+		targetPosition = target.position;
 
-	void PrepareCoins()
+	}
+
+    void PrepareCoins()
 	{
 		GameObject coin;
 		//50=maxCoinsとは別に一旦仮設定

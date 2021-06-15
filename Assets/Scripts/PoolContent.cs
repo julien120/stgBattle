@@ -26,7 +26,8 @@ public class PoolContent : MonoBehaviour
 
     public void HideFromStage()
     {
-        Debug.Assert(gameObject.activeInHierarchy);
+        if (this.gameObject == null) return;
+        //Debug.Assert(gameObject.activeInHierarchy);
         pool.Collect(this);
     }
 }

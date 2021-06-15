@@ -21,6 +21,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8544306005197405709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834809429656966366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289f7bd5f50524eb5a3e34db5bfb95c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1001 &8222818103362199646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37,6 +50,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: PlayerBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413354461425503458, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119097434850413026, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050047131699377755, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0025793612
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050047131699377755, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.15484127
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050047131699377755, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2101144337208802960, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
         type: 3}
@@ -93,32 +131,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8413354461425503458, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6050047131699377755, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0025793612
-      objectReference: {fileID: 0}
-    - target: {fileID: 6050047131699377755, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.15484127
-      objectReference: {fileID: 0}
-    - target: {fileID: 6050047131699377755, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2160718126836228161, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
+    - target: {fileID: 5799013881824875364, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5799013881824875364, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
+    - target: {fileID: 2160718126836228161, guid: 262d6ccaf76c34a8fa2e8521f26eed43,
         type: 3}
       propertyPath: m_IsActive
       value: 0

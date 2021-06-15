@@ -9,17 +9,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int scorePoint = 0;
     private CoinAnimation coinAnimation;
 
-    private Material flashMaterial = null;
+    private Renderer flashMaterial = null;
 
     private ObjectPool bulletpool;
     private ObjectPool explosionpool;
+    private Color color;
 
     // Start is called before the first frame update
     void Start()
     {
-        flashMaterial = transform.GetComponentsInChildren<Renderer>()[0].material;
-        flashMaterial.EnableKeyword("_EMISSION");
-
+        flashMaterial = transform.GetComponentInChildren<Renderer>();
+        color = flashMaterial.material.color;
+        
         bulletpool = StageController.Instance.enemyBulletPool;
         explosionpool = StageController.Instance.explosionPool;
         coinAnimation = FindObjectOfType<CoinAnimation>();
@@ -40,15 +41,15 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("PlayerBullet"))
         {
-            Debug.Log("当たった");
             var poolobj = other.GetComponent<PoolContent>();
             poolobj.HideFromStage();
             hitPoint -= 1;
             coinAnimation.AddCoins(transform.position, 2);
+            StageController.Instance.AddScore(scorePoint);
             if (hitPoint <= 0)
             {
                 StageController.Instance.isStageBossDead = isBoss;
-                //todoStageController.Instance.AddScore(scorePoint);
+                StageController.Instance.AddScore(scorePoint);
                 explosionpool.Launch(transform.position,
 0).GetComponent<ExplosionParticle>().PlayParticle();
                // coinAnimation.AddCoins(transform.position, 2);
@@ -63,9 +64,14 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator FlashTimeWait()
     {
-        flashMaterial.SetColor("_EmissionColor", Color.red);
+        Color color = flashMaterial.material.color;
+        color.r = 208;  // RGBのR(赤)値
+        //color.g = 141f; // RGBのG(緑)値
+        //color.b = 141f; // RGBのB(青)値
+        //color.a = 255f;
+        flashMaterial.material.color = color;
         yield return new WaitForSeconds(0.05f);
-        flashMaterial.SetColor("_EmissionColor", Color.black);
+        flashMaterial.material.color = Color.white;
     }
 
     public void Shot(EnemyBulletPattern _o)

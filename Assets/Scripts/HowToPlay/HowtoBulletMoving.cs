@@ -19,8 +19,7 @@ public class HowtoBulletMoving : MonoBehaviour
         transform.Translate(new Vector2(0, 3) * speed * Time.deltaTime);
 
         //howtoplay用3.4
-        if (
-            transform.localPosition.y > -10)
+        if (transform.localPosition.y > 13)
         {
             poolContent.HideFromStage();
         }

@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoint: 100
-  isBoss: 0
+  isBoss: 1
   scorePoint: 10
 --- !u!61 &8111496440600461466
 BoxCollider2D:

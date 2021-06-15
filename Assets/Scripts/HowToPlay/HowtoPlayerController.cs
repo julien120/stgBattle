@@ -41,7 +41,7 @@ public class HowtoPlayerController : MonoBehaviour
         if (shootInterval <= 0)
         {
             var obj = bulletPool.Launch(transform.position + Vector3.up * 1.4f, 0);
-            if (obj != null) obj.GetComponent<BulletMoving>().speed = 4f;
+            if (obj != null) obj.GetComponent<HowtoBulletMoving>().speed = 4f;
             shootInterval = 0.3f;
         }
     }

@@ -61,18 +61,17 @@ public class PlayerController : MonoBehaviour
             isDead = true;
             
         }
-       // coinAnimation.AddCoins(_other.transform.position, 2);
     }
 
     public void SetupForPlay() //追加
     {
         shootInterval = 0;
         isDead = false;
-        transform.localPosition = new Vector3(0, -4.06f, 5f);
+        transform.localPosition = new Vector3(0, -2.55f, 5f);
         transform.localEulerAngles = new Vector3(0, 0, 0);
     }
 
-    public void SetupForTitle() //追加
+    public void SetupForTitle()
     {
         transform.localPosition = restartPos;
         transform.localEulerAngles = restartRot;

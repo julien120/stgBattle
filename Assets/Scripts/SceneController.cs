@@ -25,9 +25,17 @@ public class SceneController : MonoBehaviour
 
         }
     }
-
+    public void LoadHomeScene()
+    {
+        SceneManager.LoadScene(SceneName.Title);
+    }
     public void LoadInGame1()
     {
         SceneManager.LoadScene(SceneName.Stage01);
+    }
+
+    public void LoadRestartStage(SceneName sceneName)
+    {
+        SceneManager.LoadScene(sceneName.ToString());
     }
 }

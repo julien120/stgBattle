@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
-    [SerializeField] public ObjectPool playerBulletPool = default;
-     [SerializeField] public ObjectPool enemyBulletPool = default;
-    [SerializeField] public PlayerController playerObj = default;
+    [SerializeField] public ObjectPool playerBulletPool;
+     [SerializeField] public ObjectPool enemyBulletPool;
+    [SerializeField] public PlayerController playerObj;
 
-    [SerializeField] private StageSequencer sequencer = default;
-    [SerializeField] public Transform enemyPool = default;
+    [SerializeField] private StageSequencer sequencer;
+    [SerializeField] public Transform enemyPool;
 
-    [SerializeField] public ObjectPool explosionPool = default;
+    [SerializeField] public ObjectPool explosionPool;
+    [SerializeField] UnityEngine.UI.Text ScoreValue;
+    private int highScore;
 
     public float stageSpeed = 1;
     float stageProgressTime = 0;
@@ -20,7 +22,7 @@ public class StageController : MonoBehaviour
 
     public bool isStageBossDead;
 
-    int score = 0; //追加
+    int score= 0; //追加
 
     private static StageController instance;
     public static StageController Instance { get => instance; }
@@ -44,8 +46,9 @@ public class StageController : MonoBehaviour
         sequencer.Reset();
         stageProgressTime = 0;
         isPlaying = false;
-      //  SetScore(0);
+        SetScore(0);
         playerObj.SetupForTitle();
+        highScore = PlayerPrefs.GetInt(PlayerPrefsKeys.HighScoreData);
     }
 
     // Update is called once per frame
@@ -88,7 +91,7 @@ public class StageController : MonoBehaviour
         sequencer.Reset();
         isStageBossDead = false;
         playerObj.SetupForPlay(); //追加
-        //SetScore(0); //追加
+        SetScore(0); 
 
     }
 
@@ -98,4 +101,26 @@ public class StageController : MonoBehaviour
         BroadcastMessage("HideFromStage", SendMessageOptions.DontRequireReceiver);
         transform.position = Vector3.zero;
     }
+    public void AddScore(int _val)
+    {
+        SetScore(score + _val);
+    }
+    public void SetScore(int _val)
+    {
+        score = _val;
+        ScoreValue.text = $"{score:0}";
+
+        SetHighScore(score);
+    }
+
+    private void SetHighScore(int score)
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt(PlayerPrefsKeys.HighScoreData, highScore);
+            //todo:inGameViewに伝えるrx
+        }
+    }
+
 }
