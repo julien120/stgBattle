@@ -31,6 +31,9 @@ public class TitleView : MonoBehaviour
         howOKButton.onClick.AsObservable().Subscribe(x => ToHomeFromHow());
         howToPlayButton.onClick.AsObservable().Subscribe(x => SetHowToPlay());
 
+        //levelSelectionButton
+        levelSelectionButton[0].onClick.AsObservable().Subscribe(x => SceneController.Instance.LoadInGame1());
+
         //title
         SetTitle().Forget();
 

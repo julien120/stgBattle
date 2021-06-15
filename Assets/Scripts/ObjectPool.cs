@@ -7,6 +7,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private PoolContent content = default;
     private Queue<PoolContent> objctQueue;
     [SerializeField] private int MaxObjcts = 20;
+    [SerializeField] private int Zindex =3;
 
     void Start()
     {
@@ -15,13 +16,13 @@ public class ObjectPool : MonoBehaviour
         {
             var tmpobj = Instantiate(content);
             tmpobj.transform.parent = transform;
-            tmpobj.transform.localPosition = new Vector3(100, 100,3);//画面外
+            tmpobj.transform.localPosition = new Vector3(100, 100, Zindex);//画面外
             objctQueue.Enqueue(tmpobj);
         }
     }
 
 
-    public PoolContent Launch(Vector3 _position, float _angle)
+    public PoolContent Launch(Vector2 _position, float _angle)
     {
         if (objctQueue.Count <= 0) return null;
         var tmpobj = objctQueue.Dequeue();

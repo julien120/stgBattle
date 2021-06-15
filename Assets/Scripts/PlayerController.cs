@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]private ObjectPool bulletPool;
+    [SerializeField] private CoinAnimation coinAnimation;
 
     private float shootInterval = 0;
     public bool isDead;
@@ -52,13 +53,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider _other) //追加
+    private void OnTriggerEnter2D(Collider2D _other)
     {
         if (_other.CompareTag("EnemyBullet"))
         {
             _other.GetComponent<PoolContent>().HideFromStage();
             isDead = true;
+            
         }
+       // coinAnimation.AddCoins(_other.transform.position, 2);
+    }
+
+    public void SetupForPlay() //追加
+    {
+        shootInterval = 0;
+        isDead = false;
+        transform.localPosition = new Vector3(0, -4.06f, 5f);
+        transform.localEulerAngles = new Vector3(0, 0, 0);
+    }
+
+    public void SetupForTitle() //追加
+    {
+        transform.localPosition = restartPos;
+        transform.localEulerAngles = restartRot;
     }
 
 

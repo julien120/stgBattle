@@ -21,7 +21,7 @@ public class PoolContent : MonoBehaviour
     public void ShowInStage(Vector3 _position, float _angle)
     {
         transform.position = _position;
-        transform.eulerAngles = new Vector3(0, _angle,1);
+        transform.eulerAngles = new Vector3(0, 0, _angle);
     }
 
     public void HideFromStage()
