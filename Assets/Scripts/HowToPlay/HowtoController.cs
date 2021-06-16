@@ -6,18 +6,31 @@ using UniRx;
 public class HowtoController : MonoBehaviour
 {
     [SerializeField] private HowtoPlayerController playerObj;
-    // Start is called before the first frame update
+
+    private Interface interfacetype;
+
+    private void Start()
+    {
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            interfacetype = new InputOnMobile();
+        }
+        else if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            interfacetype = new InputOnPC();
+        }
+        else
+        {
+            interfacetype = new InputOnPC();
+        }
+    }
+
     void Update()
     {
-        var xaxis = Input.GetAxisRaw("Horizontal");
-        var yaxis = Input.GetAxisRaw("Vertical");
+        var xaxis = interfacetype.Horizontal();
+        var yaxis = interfacetype.Vertical();
         playerObj.Move(new Vector2(xaxis,yaxis));
 
-        //if (Input.GetButton("Fire1"))
-        //{
-        //    playerObj.Shot();
-        //}
-       // playerObj.Shot();
 
         Observable.Interval(System.TimeSpan.FromSeconds(0.3))
             .Subscribe(x =>

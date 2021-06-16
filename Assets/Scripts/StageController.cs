@@ -26,6 +26,7 @@ public class StageController : MonoBehaviour
 
     private static StageController instance;
     public static StageController Instance { get => instance; }
+    private Interface interfacetype;
 
     private void Awake()
     {
@@ -49,6 +50,23 @@ public class StageController : MonoBehaviour
         SetScore(0);
         playerObj.SetupForTitle();
         highScore = PlayerPrefs.GetInt(PlayerPrefsKeys.HighScoreData);
+        CheckInterface();
+    }
+
+    private void CheckInterface()
+    {
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            interfacetype = new InputOnMobile();
+        }
+        else if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            interfacetype = new InputOnPC();
+        }
+        else
+        {
+            interfacetype = new InputOnPC();
+        }
     }
 
     // Update is called once per frame
@@ -56,12 +74,12 @@ public class StageController : MonoBehaviour
     {
         if (playerObj.isDead)
         {
-            playStopCode = PlayStopCodeDef.PlayerDead; //追加
+            playStopCode = PlayStopCodeDef.PlayerDead;
             isPlaying = false;
         }
         if (isStageBossDead)
         {
-            playStopCode = PlayStopCodeDef.BossDefeat; //追加
+            playStopCode = PlayStopCodeDef.BossDefeat;
             isPlaying = false;
         }
 
@@ -71,8 +89,8 @@ public class StageController : MonoBehaviour
 
         transform.Translate(Vector2.up * Time.deltaTime * stageSpeed);
 
-        var xaxis = Input.GetAxisRaw("Horizontal");
-        var yaxis = Input.GetAxisRaw("Vertical");
+        var xaxis = interfacetype.Horizontal();
+        var yaxis = interfacetype.Vertical();
         playerObj.Move(new Vector2(xaxis, yaxis));
 
         if (Input.GetButton("Fire1"))
@@ -80,22 +98,20 @@ public class StageController : MonoBehaviour
             playerObj.Shot();
         }
         playerObj.Shot();
-        //Debug.Log(transform.position.y);
     }
 
-    public void StageStart() //追加
+    public void StageStart() 
     {
         isPlaying = true;
         stageProgressTime = 0;
         stageSpeed = 0;
         sequencer.Reset();
         isStageBossDead = false;
-        playerObj.SetupForPlay(); //追加
+        playerObj.SetupForPlay();
         SetScore(0); 
-
     }
 
-    public void ResetStage() //追加
+    public void ResetStage()
     {
         playerObj.SetupForTitle();
         BroadcastMessage("HideFromStage", SendMessageOptions.DontRequireReceiver);

@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         shootInterval = 0;
         isDead = false;
-        transform.localPosition = new Vector3(0, -2.55f, 5f);
+        transform.localPosition = new Vector3(0, -4.06f, 5f);
         transform.localEulerAngles = new Vector3(0, 0, 0);
     }
 
