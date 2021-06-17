@@ -8,32 +8,31 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System;
 
+
 public class InGameView : MonoBehaviour
 {
     //ゲームオーバー
     [SerializeField] private Transform gameOverDialog;
     [SerializeField] private Button[] backHomeButton;
     [SerializeField] private Button[] restartStageButton;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip backSe;
+    [SerializeField] private AudioClip restartSe;
+
     [SerializeField] private Text[] highScoreText;
+    private GameObject bgm;
 
     //ゲームクリア
     [SerializeField] private Transform gameClearDialog;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
+    [SerializeField] private PlayerPrefsKeys.KindofData stageData = PlayerPrefsKeys.KindofData.HIGHSCORE01;
     /// <summary>
     /// DOTweenアニメーション用の初期化
     /// </summary>
     public void Initialize()
     {
+        bgm = GameObject.Find("BgmManager");
         gameOverDialog.transform.localScale = Vector3.zero;
         gameClearDialog.transform.localScale = Vector3.zero;
 
@@ -48,24 +47,28 @@ public class InGameView : MonoBehaviour
 
     public void BackHomeButton()
     {
-        SceneController.Instance.LoadHomeScene();
+        Destroy(bgm);
+        audioSource.PlayOneShot(backSe);
+        DOVirtual.DelayedCall(0.3f, () => SceneController.Instance.LoadHomeScene());
     }
 
     public void RestartStageButton()
     {
-        SceneController.Instance.LoadInGame1();
+        audioSource.PlayOneShot(restartSe);
+        
+        DOVirtual.DelayedCall(0.3f, () => SceneController.Instance.LoadCurrentScene());
     }
 
     public void SetGameOverAnimation()
     {
         gameOverDialog.transform.DOScale(1f, 0.3f).SetEase(Ease.OutSine);
-        var score = PlayerPrefs.GetInt(PlayerPrefsKeys.HighScoreData);
+        var score = PlayerPrefs.GetInt(stageData.ToString());
         highScoreText[1].text = score.ToString();
     }
 
     public void SetGameClearAnimation()
     {
-        var score = PlayerPrefs.GetInt(PlayerPrefsKeys.HighScoreData);
+        var score = PlayerPrefs.GetInt(stageData.ToString());
         highScoreText[0].text = score.ToString();
         DOVirtual.DelayedCall(0.7f, () => gameClearDialog.transform.DOScale(1f, 0.3f).SetEase(Ease.OutSine));
     }

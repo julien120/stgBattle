@@ -40,7 +40,9 @@ public class StageController : MonoBehaviour
     }
     public PlayStopCodeDef playStopCode;
 
- 
+    //todoこっちも本当エディター拡張でプルダウン式にしたい
+    [SerializeField] private PlayerPrefsKeys.KindofData stageData = PlayerPrefsKeys.KindofData.HIGHSCORE01;
+
     void Start()
     {
         sequencer.Load();
@@ -49,7 +51,7 @@ public class StageController : MonoBehaviour
         isPlaying = false;
         SetScore(0);
         playerObj.SetupForTitle();
-        highScore = PlayerPrefs.GetInt(PlayerPrefsKeys.HighScoreData);
+        highScore = PlayerPrefs.GetInt(stageData.ToString());
         CheckInterface();
     }
 
@@ -134,7 +136,7 @@ public class StageController : MonoBehaviour
         if (score > highScore)
         {
             highScore = score;
-            PlayerPrefs.SetInt(PlayerPrefsKeys.HighScoreData, highScore);
+            PlayerPrefs.SetInt(stageData.ToString(), highScore);
             //todo:inGameViewに伝えるrx
         }
     }

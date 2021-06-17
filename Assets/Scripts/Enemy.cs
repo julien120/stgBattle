@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     private ObjectPool bulletpool;
     private ObjectPool explosionpool;
     private Color color;
+    [SerializeField] private AudioSource audeioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
             StageController.Instance.AddScore(scorePoint);
             if (hitPoint <= 0)
             {
+                audeioSource.Play();
                 StageController.Instance.isStageBossDead = isBoss;
                 StageController.Instance.AddScore(scorePoint);
                 explosionpool.Launch(transform.position,
@@ -57,6 +59,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                audeioSource.Play();
                 StartCoroutine(FlashTimeWait());
             }
         }

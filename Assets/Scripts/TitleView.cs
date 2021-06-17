@@ -23,6 +23,11 @@ public class TitleView : MonoBehaviour
     //button
     [SerializeField] private Button[] levelSelectionButton;
 
+    //se
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip levelSelectionSe;
+    [SerializeField] private AudioClip otherSe;
+
     void Start()
     {
         //buttonの設定
@@ -32,7 +37,35 @@ public class TitleView : MonoBehaviour
         howToPlayButton.onClick.AsObservable().Subscribe(x => SetHowToPlay());
 
         //levelSelectionButton
-        levelSelectionButton[0].onClick.AsObservable().Subscribe(x => SceneController.Instance.LoadInGame1());
+        levelSelectionButton[0].onClick.AsObservable().Subscribe( x =>
+        {
+            audioSource.PlayOneShot(levelSelectionSe);
+            DOVirtual.DelayedCall(0.3f, () => SceneController.Instance.LoadInGame1());
+        });
+
+        levelSelectionButton[1].onClick.AsObservable().Subscribe(x =>
+        {
+            audioSource.PlayOneShot(levelSelectionSe);
+            DOVirtual.DelayedCall(0.3f, () => SceneController.Instance.LoadInGame2());
+        });
+
+        levelSelectionButton[2].onClick.AsObservable().Subscribe(x =>
+        {
+            audioSource.PlayOneShot(levelSelectionSe);
+            DOVirtual.DelayedCall(0.3f, () => SceneController.Instance.LoadInGame3());
+        });
+
+        levelSelectionButton[3].onClick.AsObservable().Subscribe(x =>
+        {
+            audioSource.PlayOneShot(levelSelectionSe);
+            DOVirtual.DelayedCall(0.3f, () => SceneController.Instance.LoadInGame4());
+        });
+
+        levelSelectionButton[4].onClick.AsObservable().Subscribe(x =>
+        {
+            audioSource.PlayOneShot(levelSelectionSe);
+            DOVirtual.DelayedCall(0.3f, () => SceneController.Instance.LoadInGame5());
+        });
 
         //title
         SetTitle().Forget();
@@ -40,22 +73,18 @@ public class TitleView : MonoBehaviour
         //homeの攻略可能なステージ
         SetStageLevelSelection();
 
-
-    }
-
-    void Update()
-    {
-        
     }
 
     private async UniTaskVoid SetTitle()
     {
-       await charaPannel.DOAnchorPos(Vector2.zero, 0.2f).AsyncWaitForCompletion();
+        await charaPannel.DOAnchorPos(Vector2.zero, 0.2f).AsyncWaitForCompletion();
         titleChara.DOAnchorPos(new Vector2(-117, -138), 0.4f).SetEase(Ease.InOutBack);
+        
     }
 
     private async UniTaskVoid ToHomeFromTitle()
     {
+        audioSource.PlayOneShot(otherSe);
         await titlePannel.DOAnchorPos(new Vector2(-844, 0), 0.1f).AsyncWaitForCompletion();
         DOVirtual.DelayedCall(0.2f, () => titleCharaPapa.DOAnchorPos(new Vector2(-844, 0), 0.4f));
         
@@ -75,25 +104,17 @@ public class TitleView : MonoBehaviour
 
     private void SetHowToPlay()
     {
+        audioSource.PlayOneShot(otherSe);
         howToPlayPannel.DOAnchorPos(Vector2.zero, 0.3f);
         howtoplayChara.SetActive(true);
     }
 
     private void ToHomeFromHow()
     {
+        audioSource.PlayOneShot(otherSe);
         howtoplayChara.SetActive(false);
         howToPlayPannel.DOAnchorPos(new Vector2(0, -1888), 0.3f);
     }
 
-
-    //inGame開発時に記述する予定のステージ解放スクリプト
-    private void UpdateStageLevelSelection()
-    {
-        var nextStageCount = 2;
-        if (nextStageCount> PlayerPrefs.GetInt(PlayerPrefsKeys.LevelCount))
-        {
-            PlayerPrefs.SetInt(PlayerPrefsKeys.LevelCount, nextStageCount);
-        }
-    }
 
 }

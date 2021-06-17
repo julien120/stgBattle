@@ -6,11 +6,13 @@ public class HowtoBulletMoving : MonoBehaviour
 {
     public float speed;
     private PoolContent poolContent;
+    [SerializeField] private AudioSource audeioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         poolContent = transform.GetComponent<PoolContent>();
+        audeioSource.Play();
     }
 
     // Update is called once per frame

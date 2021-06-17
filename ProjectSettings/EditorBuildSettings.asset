@@ -11,6 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InGame1.unity
     guid: 4b55b6ba18c07499097c3e5d3b1dc464
+  - enabled: 1
+    path: Assets/Scenes/InGame2.unity
+    guid: a1c8b7fd2f0ea4ec0a4e02f9e1c0f481
+  - enabled: 1
+    path: Assets/Scenes/InGame3.unity
+    guid: b79fc491fc11c40b5a8a6a12658aeac8
+  - enabled: 1
+    path: Assets/Scenes/InGame4.unity
+    guid: c23e58ee2628d4d448a9875a3221b8f0
+  - enabled: 1
+    path: Assets/Scenes/InGame5.unity
+    guid: 645e778e5c0724c54a120942e9940295
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
