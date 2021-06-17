@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1bcf6159054840aba7f7767a9506090, type: 3}
-  m_Name: 3wayaim
+  m_Name: 3wayaim03
   m_EditorClassIdentifier: 
   direction: 180
   speed: 2
-  count: 5
-  openAngle: 5
+  count: 4
+  openAngle: 3
   isAimPlayer: 1
