@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca576ce6342a497f902e896f782c49d, type: 3}
+  m_Name: Stage04
+  m_EditorClassIdentifier: 
+  filename: stage04
+  enemyPrefabs:
+  - {fileID: 3128636351200473506, guid: e896476199bda4aa6b464ca288407c68, type: 3}
+  - {fileID: 5947266636704900339, guid: 7143b9e6984f342d18361227c202013d, type: 3}
+  - {fileID: 675668120388809102, guid: 5e0dca8255e5c4ed998ea078863ebe97, type: 3}
+  - {fileID: 3331946338225824283, guid: b777bdfdc28bd4b0d94a0ec7c7d9473c, type: 3}
