@@ -19,7 +19,7 @@ public class AdsScript : MonoBehaviour
         //広告の初期化
         //Advertisement.Initialize(gameID, testMode: false);
         //Advertisement.Initialize(gameID, testMode: true, enablePerPlacementLoad: true);
-        Advertisement.Initialize(gameID, testMode: true);
+        Advertisement.Initialize(gameID, testMode: false);
         StartCoroutine(ShowBannerWhenInitialized());
 
     }
