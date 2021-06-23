@@ -19,6 +19,8 @@ public class TitleView : MonoBehaviour
     [SerializeField] private Button howOKButton;
     [SerializeField] private GameObject howtoplayChara;
 
+    [SerializeField] private Text touchScreenText;
+
     //stageLevelSelection
     //button
     [SerializeField] private Button[] levelSelectionButton;
@@ -30,7 +32,10 @@ public class TitleView : MonoBehaviour
 
     void Start()
     {
-        //buttonの設定
+        touchScreenText.DOFade(0.0f, 1).SetEase(Ease.InCubic).SetLoops(-1, LoopType.Yoyo);
+    
+
+         //buttonの設定
         titlePannelButton.onClick.AsObservable().First().Subscribe(x => ToHomeFromTitle().Forget());
 
         howOKButton.onClick.AsObservable().Subscribe(x => ToHomeFromHow());

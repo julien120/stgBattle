@@ -1311,6 +1311,7 @@ MonoBehaviour:
   howToPlayButton: {fileID: 753434490}
   howOKButton: {fileID: 1834043602}
   howtoplayChara: {fileID: 1250487116}
+  touchScreenText: {fileID: 2103482393}
   levelSelectionButton:
   - {fileID: 1221574771}
   - {fileID: 396948887}
@@ -1476,7 +1477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.10875324}
   m_AnchorMax: {x: 1, y: 0.83000004}
-  m_AnchoredPosition: {x: 0, y: 7.799988}
+  m_AnchoredPosition: {x: 0, y: 7.800049}
   m_SizeDelta: {x: 0, y: 148.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &698740899
@@ -1670,10 +1671,10 @@ RectTransform:
   m_Father: {fileID: 1463859884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.6037663}
-  m_AnchorMax: {x: 0.70000005, y: 1}
-  m_AnchoredPosition: {x: -108.99997, y: 82.49997}
-  m_SizeDelta: {x: -217, y: -163}
+  m_AnchorMin: {x: 0, y: 0.8387881}
+  m_AnchorMax: {x: 0.34, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0.000015258789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &753434490
 MonoBehaviour:
@@ -3656,7 +3657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7264151, g: 0.70928264, b: 0.70928264, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
